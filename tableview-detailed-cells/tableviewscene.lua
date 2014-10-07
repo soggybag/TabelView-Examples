@@ -125,7 +125,7 @@ function scene:createScene( event )
 		listView:insertRow( {
 			rowHeight=48
 		} )
-	end 
+	end
 end
 
 

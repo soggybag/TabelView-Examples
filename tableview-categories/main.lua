@@ -4,25 +4,50 @@
 --
 -----------------------------------------------------------------------------------------
 
--- Your code here
+-- This example creates a table view showing a list. The example shows 
+-- how to group the list into categories with dividers. 
 
 
+-- Import the widget library
 local widget = require( "widget" )
 
-local ROW_COLOR 		= {
-	default={222/255, 0/255,222/255, 1.0}, 
-	over={222/255, 100/255,222/255, 1.0}
+
+
+-- Use these variables at the top of the page to easily set the color of the rows
+-- and categories. 
+
+-- Colors are set in tables containing rgba (red, green, blue, and alpha) values. 
+-- In some cases a table will contain two tables "default" and "over" these will 
+-- set colors for interactive elements. The default being the standard color for the 
+-- element while over being the color when the element is touched. 
+
+-- All RGBA color values are set in a range of 0.0 to 1.0. Often it's easier to think
+-- color values in the range 0 to 255. You can convert a 255 range into a 1 rage 
+-- by dividing by 255. For example 0.5 could be represented by 128/255.  
+
+-- Set the background for rows. 
+local ROW_COLOR = {
+	default={232/255, 232/255,232/255, 1.0}, 
+	over={160/255, 160/255,200/255, 1.0}
 }
-local ROW_CATEGORY_COLOR= {
-	default={100/255,0/255,100/255, 1.0}, 
+
+-- Set the background of categories. 
+local ROW_CATEGORY_COLOR = {
+	default={100/255,100/255,100/255, 1.0}, 
 	over={100/255,0/255,100/255, 1.0}
 }
-local LINE_COLOR 		= {255/255, 0/255, 0/255, 1.0}
-local BACKGROUND_COLOR 	= {222/255,100/255,222/255, 1.0}
 
+-- Set the color for the line between table cells. 
+local LINE_COLOR = {128/255, 120/255, 128/255, 1.0}
+
+-- Color behind the table view
+local BACKGROUND_COLOR 	= {222/255,222/255,222/255, 1.0}
+
+-- Height for category dividers
 local ROW_CATEGORY_HEIGHT = 28
 
-local LABEL_FONT_SIZE = 20
+-- These values style the type that appears in table cells. 
+local LABEL_FONT_SIZE = 20			
 local LABEL_FONT = native.systemFont
 local LABEL_COLOR = {100/255,100/255,100/255, 1.0 }
 local ROW_LABEL_COLOR = {200/255,200/255,200/255, 1.0 }
@@ -32,6 +57,8 @@ local SUB_FONT = native.systemFont
 local SUB_COLOR = {100/255,100/255,100/255, 1.0 }
 
 
+
+-- This table holds the data displayed in the table view. 
 local data_array = { 
 	{label="Thing A", sub_text="some more text"},
 	{label="Thing B", sub_text="some more text"},
